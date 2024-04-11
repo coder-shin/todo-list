@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Todo } from '../../models/todo';
-import { TodoList } from '../../models/todo-list';
+import { Todo } from '../../interfaces/todo';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todos',
@@ -8,11 +8,19 @@ import { TodoList } from '../../models/todo-list';
   styleUrl: './todos.component.css'
 })
 export class TodosComponent {
-  todoList: TodoList = new TodoList([
-    new Todo('default todo1'),
-    new Todo('default todo2'),
-    new Todo('default todo3'),
-  ]);
+  constructor(
+    private todoService: TodoService
+  ) { }
+
+  todoList: Todo[] = [
+    this.todoService.generateTodo('default todo1'),
+    this.todoService.generateTodo('default todo2'),
+    this.todoService.generateTodo('default todo3'),
+  ];
+
+  toggleDone = (todo: Todo): void => {
+    todo.done = !todo.done;
+  }
 
   addTodoByKeyupEnter = (event: Event): void => {
     const input = event.target as HTMLInputElement;
@@ -22,11 +30,21 @@ export class TodosComponent {
       return;
     }
 
-    this.todoList.addTodo(title);
+    this.addTodo(title);
     this.clearInputValue(input);
+  }
+
+  addTodo = (title: string): void => {
+    const newTodo = this.todoService.generateTodo(title);
+    this.todoList.push(newTodo);
   }
 
   clearInputValue = (input: HTMLInputElement): void => {
     input.value = '';
+  }
+
+  removeTodo = (todo: Todo): void => {
+    const id = todo.id;
+    this.todoList = this.todoList.filter((t: Todo) => t.id !== id);
   }
 }

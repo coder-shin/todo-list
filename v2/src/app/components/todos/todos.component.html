@@ -1,12 +1,12 @@
 <h1>Todos</h1>
 
-<ul *ngFor="let todo of this.todoList.todoList">
+<ul *ngFor="let todo of this.todoList">
   <li>
     <input
     type="checkbox"
     name="done"
     [checked]="todo.done"
-    (change)="todo.toggleDone()"
+    (change)="this.toggleDone(todo)"
     />
 
     <span [class.done]="todo.done">
@@ -17,7 +17,7 @@
     type="button"
     name="remove-button"
     value="x"
-    (click)="this.todoList.remove(todo.id)"
+    (click)="removeTodo(todo)"
     />
   </li>
 </ul>
