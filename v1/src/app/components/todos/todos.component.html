@@ -12,6 +12,13 @@
     <span [class.done]="todo.done">
       {{ todo.title }}
     </span>
+
+    <input
+    type="button"
+    name="remove-button"
+    value="x"
+    (click)="remove(todo.id)"
+    />
   </li>
 </ul>
 

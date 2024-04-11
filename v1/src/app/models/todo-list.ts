@@ -12,7 +12,15 @@ export class TodoList {
     this.todoList.push(todo);
   }
 
+  remove = (id: number): void => {
+    this.todoList = this._todoList.filter((todo: Todo) => todo.id !== id);
+  }
+
   get todoList() {
     return this._todoList;
+  }
+
+  set todoList(todoList: Todo[]) {
+    this._todoList = todoList;
   }
 }
