@@ -1,0 +1,31 @@
+<h1>Todos</h1>
+
+<ul *ngFor="let todo of this.todoList.todoList">
+  <li>
+    <input
+    type="checkbox"
+    name="done"
+    [checked]="todo.done"
+    (change)="todo.toggleDone()"
+    />
+
+    <span [class.done]="todo.done">
+      {{ todo.title }}
+    </span>
+
+    <input
+    type="button"
+    name="remove-button"
+    value="x"
+    (click)="this.todoList.remove(todo.id)"
+    />
+  </li>
+</ul>
+
+<input
+type="text"
+name="input-add-todo"
+value=""
+(keyup.enter)="addTodoByKeyupEnter($event)"
+/>
+
