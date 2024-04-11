@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Todo } from '../../models/todo';
 import { TodoList } from '../../models/todo-list';
 
@@ -24,10 +24,6 @@ export class TodosComponent {
 
     this.todoList.addTodo(title);
     this.clearInputValue(input);
-  }
-
-  remove = (id: number): void => {
-    this.todoList.remove(id);
   }
 
   clearInputValue = (input: HTMLInputElement): void => {
