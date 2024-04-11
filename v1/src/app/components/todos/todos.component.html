@@ -1,4 +1,5 @@
 <h1>Todos</h1>
+
 <ul *ngFor="let todo of this.todos">
   <li>
     <input
@@ -13,4 +14,11 @@
     </span>
   </li>
 </ul>
+
+<input
+type="text"
+name="input-add-todo"
+value=""
+(keyup.enter)="addTodoByKeyupEnter($event)"
+/>
 
