@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrl: './todos.component.css'
 })
 export class TodosComponent {
-
 }
