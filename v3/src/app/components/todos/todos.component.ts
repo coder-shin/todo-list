@@ -26,6 +26,10 @@ export class TodosComponent {
     this.clearInputValue(input);
   }
 
+  remove = (todoId: number): void => {
+    this.todoList.remove(todoId);
+  }
+
   clearInputValue = (input: HTMLInputElement): void => {
     input.value = '';
   }

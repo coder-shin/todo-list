@@ -2,23 +2,10 @@
 
 <ul *ngFor="let todo of this.todoList.todoList">
   <li>
-    <input
-    type="checkbox"
-    name="done"
-    [checked]="todo.done"
-    (change)="todo.toggleDone()"
-    />
-
-    <span [class.done]="todo.done">
-      {{ todo.title }}
-    </span>
-
-    <input
-    type="button"
-    name="remove-button"
-    value="x"
-    (click)="this.todoList.remove(todo.id)"
-    />
+    <app-todo
+      [todo]="todo"
+      (removeEvent)="remove($event)"
+    ></app-todo>
   </li>
 </ul>
 
