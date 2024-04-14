@@ -5,7 +5,19 @@
   (change)="todo.toggleDone()"
 />
 
-<span [class.done]="todo.done"
+<input
+  #editInputRef
+  *ngIf="editable"
+  type="text"
+  [defaultValue]="todo.title"
+  (keyup.enter)="editDone($event)"
+  (blur)="editDone($event)"
+/>
+
+<span
+  *ngIf="!editable"
+  [class.done]="todo.done"
+  (dblclick)="editStart()"
 >{{ todo.title }}</span>
 
 <input

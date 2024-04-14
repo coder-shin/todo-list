@@ -15,4 +15,8 @@ export class Todo {
   toggleDone = (): void => {
     this.done = !this.done;
   }
+
+  setTitle = (title: string): void => {
+    this.title = title;
+  }
 }
